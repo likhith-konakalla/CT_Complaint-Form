@@ -31,11 +31,13 @@ document.getElementById('complaintForm').addEventListener('submit', function (ev
   }
 
   // Validate phone number again before submission
-  const phoneRegex = /^[0-9]{10}$/;
-  if (!phoneRegex.test(phoneNumber)) {
-    alert("Please enter a valid 10-digit phone number.");
-    return;
-  }
+const cleanedPhoneNumber = phoneNumber.replace(/\D/g, ""); // Remove non-digit characters
+
+const phoneRegex = /^[0-9]{10}$/;
+if (!phoneRegex.test(cleanedPhoneNumber)) {
+  alert("Please enter a valid 10-digit phone number.");
+  return;
+}
 
   // Validate email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
